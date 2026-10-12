@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
 
-#define MAX 100 // 1. Added missing MAX definition
+#define MAX 100 
 
 class ArrayStack {
     int arr[MAX];
     int top = -1;
 
-public: // 2. Added public access specifier so functions can be called externally
+public: 
     bool isEmpty() {
-        return top == -1; // 3. Fixed '=' to '=='
+        return top == -1; 
     }
 
     bool isFull() {
@@ -18,17 +18,31 @@ public: // 2. Added public access specifier so functions can be called externall
 
     void push(int x) {
         if (isFull()) {
-            cout << "Overflow";
+            cout << "Overflow\n";
             return;
         }
-        arr[++top] = x; // 4. Fixed '()' to '[]'
+        arr[++top] = x; 
     }
 
     int pop() {
         if (isEmpty()) {
-            cout << "Underflow";
+            cout << "Underflow\n";
             return -1;
         }
-        return arr[top--]; // 4. Fixed '()' to '[]'
+        return arr[top--]; 
     }
-}; // 5. Added missing semicolon at the end of the class
+}; 
+
+// ADDED: The main function is required for the program to run
+int main() {
+    ArrayStack stack;
+
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+
+    cout << "Popped element: " << stack.pop() << endl; // Should print 30
+    cout << "Popped element: " << stack.pop() << endl; // Should print 20
+
+    return 0;
+}
