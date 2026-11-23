@@ -14,18 +14,15 @@ struct Patient
     Patient* hashNext;
 };
 
-// Global variables
 Patient* head = NULL;
 const int SIZE = 10;
-Patient* hashTable[SIZE] = {NULL}; // Hash table array initialized to NULL
+Patient* hashTable[SIZE] = {NULL};
 
-// Simple Hash Function
 int hashFunction(int id)
 {
     return id % SIZE;
 }
 
-// Function to register a patient
 void registerPatient()
 {
     Patient* p = new Patient;
@@ -35,7 +32,6 @@ void registerPatient()
     int index = hashFunction(p->id);
     Patient* temp = hashTable[index];
     
-    // Check for duplicate ID in hash table
     while (temp != NULL)
     {
         if (temp->id == p->id)
@@ -60,18 +56,15 @@ void registerPatient()
     cout << "Enter the Disease : ";
     getline(cin, p->disease);
 
-    // Insert into Linked List (at head)
     p->next = head;
     head = p;
 
-    // Insert into Hash Table (at index head)
     p->hashNext = hashTable[index];
     hashTable[index] = p;
 
     cout << "Patient Registered Successfully!\n";
 }
 
-// Function to search a patient
 void searchPatient()
 {
     int id;
@@ -96,7 +89,6 @@ void searchPatient()
     cout << "PATIENT NOT FOUND!\n"; 
 }
 
-// Function to display all patients
 void display_Patient()
 {
     Patient* temp = head;
